@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from "./AuthService";
 import { Button, Form, Grid, Segment } from 'semantic-ui-react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
-import firebase from "../config/firebase";
+import firebase from "../CONFIG/firebase";
 
 import 'semantic-ui-css/semantic.min.css'
 
 
-const SignIn = () => {
+const SignIn = ({ history }) => {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
 
   const handleSubmit = (e) => {
     e.preventDefault()
     firebase.auth().signInWithEmailAndPassword(email, pass)
+      .then(() => {
+        history.push('/')
+      })
       .catch(error => {
         console.log(error)
       });
   };
 
+  // const user = useContext(AuthContext)
+
+  // if (user) {
+  //   return <Redirect to="/" />
+  // }
 
   return (
     <Segment placeholder style={
