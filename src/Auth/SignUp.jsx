@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 
-import firebase from "../config/firebase";
+import firebase from "../CONFIG/firebase";
 
 import 'semantic-ui-css/semantic.min.css'
 

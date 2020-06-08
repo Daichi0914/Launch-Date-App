@@ -1,10 +1,11 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Home from "./Home/Home";
-import SignIn from "./Auth/SignIn";
-import SignUp from "./Auth/SignUp";
+import Home from "./HOME/Home";
+import SignIn from "./AUTH/SignIn";
+import SignUp from "./AUTH/SignUp";
+import SignedInRoute from './AUTH/SignedInRoute';
 
-import { AuthProvider } from "./AuthService";
+import { AuthProvider } from "./AUTH/AuthService";
 
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
@@ -15,7 +16,7 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <Route exact path='/' component={Home} />
+        <SignedInRoute exact path='/' component={Home} />
         <Route exact path='/SignIn' component={SignIn} />
         <Route exact path='/SignUp' component={SignUp} />
       </Router>
