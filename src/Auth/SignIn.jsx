@@ -42,7 +42,7 @@ const SignIn = ({ history }) => {
         <Grid.Column>
           <Form onSubmit={handleSubmit}>
             <Form.Input
-              icon='user'
+              icon='envelope'
               iconPosition='left'
               label='E-mail'
               placeholder='E-mail'

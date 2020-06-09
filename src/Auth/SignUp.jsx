@@ -3,20 +3,25 @@ import { Button, Form, Grid, Segment } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
 
 import firebase from "../CONFIG/firebase";
+// import * as admin from "firebase-admin";
 
 import 'semantic-ui-css/semantic.min.css'
 
 const SignUp = () => {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
+  const [userName, setUserName] = useState('')
+
 
   const handleSubmit = (e) => {
-  e.preventDefault()
-  firebase.auth().createUserWithEmailAndPassword(email, pass)
-    .catch(error => {
-      console.log(error)
-    });
-};
+    e.preventDefault()
+    firebase.auth().createUserWithEmailAndPassword(email, pass)
+      .then(() => {firebase.auth().currentUser.updateProfile({displayName: userName})})
+      .catch(error => {
+        console.log(error)
+      })
+  };
+
 
   return (
     <Segment placeholder style={
@@ -33,9 +38,20 @@ const SignUp = () => {
             <Form.Input
               icon='user'
               iconPosition='left'
+              label='User Name'
+              type='name'
+              placeholder='User Name'
+              onChange={e => {
+                setUserName(e.target.value)
+              }}
+              value={userName}
+            />
+            <Form.Input
+              icon='envelope'
+              iconPosition='left'
               label='E-mail'
-              placeholder='E-mail'
               type='email'
+              placeholder='E-mail'
               onChange={e => {
                 setEmail(e.target.value)
               }}
@@ -47,24 +63,11 @@ const SignUp = () => {
               label='Password'
               type='password'
               placeholder='Password'
-              type='password'
               onChange={e => {
                 setPass(e.target.value)
               }}
               value={pass}
             />
-            {/* <Form.Input
-              icon='lock'
-              iconPosition='left'
-              label='Password Confirmation'
-              type='password'
-              placeholder='Password'
-              type='password'
-              onChange={e => {
-                setPass(e.target.value)
-              }}
-              value={pass}
-            /> */}
 
             <Button content='Sign Up' primary />
           </Form>
