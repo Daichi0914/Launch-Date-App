@@ -4,6 +4,7 @@ import Home from "./HOME/Home";
 import SignIn from "./AUTH/SignIn";
 import SignUp from "./AUTH/SignUp";
 import SignedInRoute from './AUTH/SignedInRoute';
+import Settings from "./SETTING/Settings";
 
 import { AuthProvider } from "./AUTH/AuthService";
 
@@ -19,6 +20,7 @@ const App = () => {
         <SignedInRoute exact path='/' component={Home} />
         <Route exact path='/SignIn' component={SignIn} />
         <Route exact path='/SignUp' component={SignUp} />
+        <Route exact path='/Settings' component={Settings} />
       </Router>
     </AuthProvider>
   );

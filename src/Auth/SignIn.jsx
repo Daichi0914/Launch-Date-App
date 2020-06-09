@@ -23,11 +23,11 @@ const SignIn = ({ history }) => {
       });
   };
 
-  // const user = useContext(AuthContext)
+  const user = useContext(AuthContext)
 
-  // if (user) {
-  //   return <Redirect to="/" />
-  // }
+  if (user) {
+    return <Redirect to="/" />
+  }
 
   return (
     <Segment placeholder style={
