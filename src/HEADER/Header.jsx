@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
-import { Menu, Segment } from 'semantic-ui-react'
-import Setting from "../SETTING/Setting";
+import React, { Component } from 'react';
+import { Menu, Segment } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
+// import Settings from '../SETTING/Settings';
+// import Home from "../HOME/Home";
 
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 
 export default class Header extends Component {
   state = { activeItem: 'home' }
@@ -15,11 +17,13 @@ export default class Header extends Component {
     return (
       <Segment inverted style={{borderRadius: '0'}}>
         <Menu inverted pointing secondary>
-          <Menu.Item
-            name='home'
-            active={activeItem === 'home'}
-            onClick={this.handleItemClick}
-          />
+          <Link to='/'>
+            <Menu.Item
+              name='home'
+              active={activeItem === 'home'}
+              onClick={this.handleItemClick}
+            />
+          </Link>
           <Menu.Item
             name='messages'
             active={activeItem === 'messages'}
@@ -27,17 +31,18 @@ export default class Header extends Component {
           />
           <Menu.Item
             name='myPage'
-            active={activeItem === 'friends'}
+            active={activeItem === 'myPage'}
             onClick={this.handleItemClick}
           />
-          <Menu.Item
-            name='setting'
-            active={activeItem === 'friends'}
-            onClick={this.handleItemClick}
-            Component={Setting}
-          />
+          <Link to='/Settings'>
+            <Menu.Item
+              name='setting'
+              active={activeItem === 'setting'}
+              onClick={this.handleItemClick}
+            />
+          </Link>
         </Menu>
       </Segment>
-    )
-  }
+    );
+  };
 };
