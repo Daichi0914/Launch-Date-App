@@ -68,7 +68,6 @@ const SignUp = () => {
               }}
               value={pass}
             />
-
             <Button content='Sign Up' primary />
           </Form>
         </Grid.Column>
