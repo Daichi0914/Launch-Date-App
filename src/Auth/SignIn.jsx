@@ -24,7 +24,6 @@ const SignIn = ({ history }) => {
   };
 
   const user = useContext(AuthContext)
-
   if (user) {
     return <Redirect to="/" />
   }

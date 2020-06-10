@@ -1,14 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from 'semantic-ui-react'
 
+import firebase from "../../CONFIG/firebase";
+
 const UserName = () => {
+  const [nowName, setNowName] = useState('')
+  const [userName, setUserName] = useState('')
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      setNowName(user.displayName)
+    } else {
+      console.log('error')
+    }
+  });
+
+  const handleSubmit = () => {
+    firebase.auth().currentUser.updateProfile({displayName: userName})
+      .catch(error => {
+        console.log(error)
+      })
+  };
+
   return (
     <div style={{marginBottom: '20px'}}>
-      <label>User Name</label><br />
-      <input type='name' style={{marginBottom: '10px'}}></input><br />
-      <Button positive>Save</Button>
+      <p style={{marginBottom: '10px'}}>User Name</p>
+      <input
+        type='name'
+        style={{marginBottom: '10px'}}
+        placeholder={nowName}
+        onChange={e => {
+          setUserName(e.target.value)
+        }}
+        value={userName}
+      /><br />
+      <Button positive onClick={() => {handleSubmit()}}>Save</Button>
     </div>
   );
 };
 
 export default UserName;
+
+
+{/* <button onClick={() => {console.log()}}>aaaaaa</button> */}
