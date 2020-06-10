@@ -1,0 +1,27 @@
+.allWrap {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 69.6px;
+}
+
+.signInForm {
+  width: 200px;
+  padding-bottom: 75px;
+  margin: 0 auto;
+}
+
+.logo {
+  text-align: center;
+}
+
+.buttonWrapper {
+  width: 137.09px;
+  height: 45.88px;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .solid {
+    display: none;
+  }
+}
