@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/Launch-Date-App/static/css/main.f2be1d11.chunk.css",
+    "main.js": "/Launch-Date-App/static/js/main.74467266.chunk.js",
+    "main.js.map": "/Launch-Date-App/static/js/main.74467266.chunk.js.map",
+    "runtime-main.js": "/Launch-Date-App/static/js/runtime-main.c0ea319c.js",
+    "runtime-main.js.map": "/Launch-Date-App/static/js/runtime-main.c0ea319c.js.map",
+    "static/css/2.ddfe1b85.chunk.css": "/Launch-Date-App/static/css/2.ddfe1b85.chunk.css",
+    "static/js/2.326aa304.chunk.js": "/Launch-Date-App/static/js/2.326aa304.chunk.js",
+    "static/js/2.326aa304.chunk.js.map": "/Launch-Date-App/static/js/2.326aa304.chunk.js.map",
+    "index.html": "/Launch-Date-App/index.html",
+    "precache-manifest.13d0932fc9a515cbe4f7d1f4627e82f5.js": "/Launch-Date-App/precache-manifest.13d0932fc9a515cbe4f7d1f4627e82f5.js",
+    "service-worker.js": "/Launch-Date-App/service-worker.js",
+    "static/css/2.ddfe1b85.chunk.css.map": "/Launch-Date-App/static/css/2.ddfe1b85.chunk.css.map",
+    "static/css/main.f2be1d11.chunk.css.map": "/Launch-Date-App/static/css/main.f2be1d11.chunk.css.map",
+    "static/js/2.326aa304.chunk.js.LICENSE.txt": "/Launch-Date-App/static/js/2.326aa304.chunk.js.LICENSE.txt",
+    "static/media/semantic.min.css": "/Launch-Date-App/static/media/outline-icons.ef60a4f6.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c0ea319c.js",
+    "static/css/2.ddfe1b85.chunk.css",
+    "static/js/2.326aa304.chunk.js",
+    "static/css/main.f2be1d11.chunk.css",
+    "static/js/main.74467266.chunk.js"
+  ]
+}
