@@ -26,7 +26,7 @@ const UserEmail = () => {
     <div style={{marginBottom: '20px'}}>
       <p style={{marginBottom: '10px'}}>User Email</p>
       <input
-        type='Email'
+        type='email'
         style={{marginBottom: '10px'}}
         placeholder={nowEmail}
         onChange={e => {
@@ -34,7 +34,13 @@ const UserEmail = () => {
         }}
         value={email}
       /><br />
-      <Button positive onClick={() => {handleSubmit()}}>Save</Button>
+      <Button positive onClick={() => {
+        if (email !== '') {
+          handleSubmit()
+        } else {
+          alert('メールアドレスを入力してください')
+        }
+      }}>Save</Button>
     </div>
   );
 };

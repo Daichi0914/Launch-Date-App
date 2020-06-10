@@ -18,12 +18,13 @@ const SignIn = ({ history }) => {
       .then(() => {
         history.push('/')
       })
-      .catch(error => {
-        console.log(error)
+      .catch(() => {
+        alert('メールアドレスかパスワードが間違っています。')
       });
   };
 
   const user = useContext(AuthContext)
+
   if (user) {
     return <Redirect to="/" />
   }
@@ -57,7 +58,6 @@ const SignIn = ({ history }) => {
               label='Password'
               type='password'
               placeholder='Password'
-              type='password'
               onChange={e => {
                 setPass(e.target.value)
               }}

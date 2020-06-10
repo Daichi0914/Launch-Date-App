@@ -1,17 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from "../../AUTH/AuthService";
 import { Button } from 'semantic-ui-react'
 
 import firebase from "../../CONFIG/firebase";
+import { Redirect } from 'react-router';
+
 
 const SignOut = () => {
   const signOutSwitch = () => {
     firebase.auth().signOut().then(()=>{
-      console.log("ログアウトしました");
-    })
-    .catch( (error)=>{
-      console.log(`ログアウト時にエラーが発生しました (${error})`);
+      console.log("サインアウトしました");
+    }).catch( (error)=>{
+      console.log(`サインアウト時にエラーが発生しました (${error})`);
     });
   };
+
+  const user = useContext(AuthContext)
+
+  if (!user) {
+    return <Redirect to='/SignIn' />
+  }
 
   return (
     <div>
