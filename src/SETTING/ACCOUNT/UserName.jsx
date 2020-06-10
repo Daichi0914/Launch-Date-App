@@ -26,7 +26,7 @@ const UserName = () => {
     <div style={{marginBottom: '20px'}}>
       <p style={{marginBottom: '10px'}}>User Name</p>
       <input
-        type='name'
+        type='text'
         style={{marginBottom: '10px'}}
         placeholder={nowName}
         onChange={e => {
@@ -34,12 +34,15 @@ const UserName = () => {
         }}
         value={userName}
       /><br />
-      <Button positive onClick={() => {handleSubmit()}}>Save</Button>
+      <Button positive onClick={() => {
+        if (userName !== '') {
+          handleSubmit()
+        } else {
+          alert('文字を入力してください')
+        }
+      }}>Save</Button>
     </div>
   );
 };
 
 export default UserName;
-
-
-{/* <button onClick={() => {console.log()}}>aaaaaa</button> */}
