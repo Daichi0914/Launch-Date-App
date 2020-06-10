@@ -18,11 +18,13 @@ export default class Header extends Component {
       <Segment inverted style={{borderRadius: '0'}}>
         <Menu inverted pointing secondary>
           <Link to='/'>
-            <Menu.Item
-              name='home'
-              active={activeItem === 'home'}
-              onClick={this.handleItemClick}
-            />
+            <object>
+              <Menu.Item
+                name='home'
+                active={activeItem === 'home'}
+                onClick={this.handleItemClick}
+              />
+            </object>
           </Link>
           <Menu.Item
             name='messages'
@@ -35,11 +37,13 @@ export default class Header extends Component {
             onClick={this.handleItemClick}
           />
           <Link to='/Settings'>
-            <Menu.Item
-              name='setting'
-              active={activeItem === 'setting'}
-              onClick={this.handleItemClick}
-            />
+            <object>
+              <Menu.Item
+                name='setting'
+                active={activeItem === 'setting'}
+                onClick={this.handleItemClick}
+              />
+            </object>
           </Link>
         </Menu>
       </Segment>
