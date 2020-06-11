@@ -3,7 +3,7 @@ import { AuthContext } from "../../AUTH/AuthService";
 import { Button } from 'semantic-ui-react'
 
 import firebase from "../../CONFIG/firebase";
-import { Redirect } from 'react-router';
+import { Redirect } from 'react-router-dom';
 
 
 const SignOut = () => {

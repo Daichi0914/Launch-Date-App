@@ -17,7 +17,7 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <SignedInRoute exact path='/' component={Home} />
+        <SignedInRoute exact path='/Launch-Date-App' component={Home} />
         <Route exact path='/SignIn' component={SignIn} />
         <Route exact path='/SignUp' component={SignUp} />
         <Route exact path='/Settings' component={Settings} />

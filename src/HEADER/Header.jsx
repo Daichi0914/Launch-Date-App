@@ -17,7 +17,7 @@ export default class Header extends Component {
     return (
       <Segment inverted style={{borderRadius: '0'}}>
         <Menu inverted pointing secondary>
-          <Link to='/'>
+          <Link to='/Launch-Date-App'>
             <object>
               <Menu.Item
                 name='home'

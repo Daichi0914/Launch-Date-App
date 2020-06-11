@@ -17,7 +17,7 @@ const SignIn = ({ history }) => {
     e.preventDefault()
     firebase.auth().signInWithEmailAndPassword(email, pass)
       .then(() => {
-        history.push('/')
+        history.push('/Launch-Date-App')
       })
       .catch(() => {
         alert('メールアドレスかパスワードが間違っています。')
@@ -27,7 +27,7 @@ const SignIn = ({ history }) => {
   const user = useContext(AuthContext)
 
   if (user) {
-    return <Redirect to="/" />
+    return <Redirect to="/Launch-Date-App" />
   }
 
   return (
