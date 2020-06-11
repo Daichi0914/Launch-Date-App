@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/Lounch-Date-App/static/css/main.f2be1d11.chunk.css",
-    "main.js": "/Lounch-Date-App/static/js/main.067f0eed.chunk.js",
-    "main.js.map": "/Lounch-Date-App/static/js/main.067f0eed.chunk.js.map",
-    "runtime-main.js": "/Lounch-Date-App/static/js/runtime-main.14c6b310.js",
-    "runtime-main.js.map": "/Lounch-Date-App/static/js/runtime-main.14c6b310.js.map",
+    "main.js": "/Lounch-Date-App/static/js/main.ad5e97ce.chunk.js",
+    "main.js.map": "/Lounch-Date-App/static/js/main.ad5e97ce.chunk.js.map",
+    "runtime-main.js": "/Lounch-Date-App/static/js/runtime-main.97790454.js",
+    "runtime-main.js.map": "/Lounch-Date-App/static/js/runtime-main.97790454.js.map",
     "static/css/2.f5461a7e.chunk.css": "/Lounch-Date-App/static/css/2.f5461a7e.chunk.css",
-    "static/js/2.0ca6b285.chunk.js": "/Lounch-Date-App/static/js/2.0ca6b285.chunk.js",
-    "static/js/2.0ca6b285.chunk.js.map": "/Lounch-Date-App/static/js/2.0ca6b285.chunk.js.map",
+    "static/js/2.c0c5db4f.chunk.js": "/Lounch-Date-App/static/js/2.c0c5db4f.chunk.js",
+    "static/js/2.c0c5db4f.chunk.js.map": "/Lounch-Date-App/static/js/2.c0c5db4f.chunk.js.map",
     "index.html": "/Lounch-Date-App/index.html",
-    "precache-manifest.b62aafd190a9fd02921f593381eed110.js": "/Lounch-Date-App/precache-manifest.b62aafd190a9fd02921f593381eed110.js",
+    "precache-manifest.95388623f19b06e15cbfea95eede80d1.js": "/Lounch-Date-App/precache-manifest.95388623f19b06e15cbfea95eede80d1.js",
     "service-worker.js": "/Lounch-Date-App/service-worker.js",
     "static/css/2.f5461a7e.chunk.css.map": "/Lounch-Date-App/static/css/2.f5461a7e.chunk.css.map",
     "static/css/main.f2be1d11.chunk.css.map": "/Lounch-Date-App/static/css/main.f2be1d11.chunk.css.map",
-    "static/js/2.0ca6b285.chunk.js.LICENSE.txt": "/Lounch-Date-App/static/js/2.0ca6b285.chunk.js.LICENSE.txt",
+    "static/js/2.c0c5db4f.chunk.js.LICENSE.txt": "/Lounch-Date-App/static/js/2.c0c5db4f.chunk.js.LICENSE.txt",
     "static/media/semantic.min.css": "/Lounch-Date-App/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
-    "static/js/runtime-main.14c6b310.js",
+    "static/js/runtime-main.97790454.js",
     "static/css/2.f5461a7e.chunk.css",
-    "static/js/2.0ca6b285.chunk.js",
+    "static/js/2.c0c5db4f.chunk.js",
     "static/css/main.f2be1d11.chunk.css",
-    "static/js/main.067f0eed.chunk.js"
+    "static/js/main.ad5e97ce.chunk.js"
   ]
 }
