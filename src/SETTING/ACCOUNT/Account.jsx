@@ -5,8 +5,8 @@ import UserInfo from "./UserInfo";
 const Account = () => {
   return (
     <div style={{display: 'flex'}}>
-      <UserImg />
       <UserInfo />
+      <UserImg />
     </div>
   );
 };

@@ -1,15 +1,16 @@
-import React, { useState } from 'react'
-import { Button } from 'semantic-ui-react'
+import React, { useState } from 'react';
+import { Button, Form } from 'semantic-ui-react';
 
 import firebase from "../../CONFIG/firebase";
+import 'semantic-ui-css/semantic.min.css';
 
 const UserEmail = () => {
-  const [nowEmail, setNowEmail] = useState('')
+  const [currentEmail, setCurrentEmail] = useState('')
   const [email, setEmail] = useState('')
 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      setNowEmail(user.email)
+      setCurrentEmail(user.email)
     } else {
       console.log('error')
     }
@@ -17,18 +18,23 @@ const UserEmail = () => {
 
   const handleSubmit = () => {
     firebase.auth().currentUser.updateEmail(`${email}`)
+      .then(() => {
+        window.alert('メールアドレスを保存しました。')
+      })
       .catch(error => {
         console.log(error)
-    })
+      })
   };
 
   return (
     <div style={{marginBottom: '20px'}}>
       <p style={{marginBottom: '10px'}}>User Email</p>
-      <input
+      <Form.Input
+        id='emailForm'
+        icon='envelope'
+        iconPosition='left'
         type='email'
-        style={{marginBottom: '10px'}}
-        placeholder={nowEmail}
+        placeholder={currentEmail}
         onChange={e => {
           setEmail(e.target.value)
         }}

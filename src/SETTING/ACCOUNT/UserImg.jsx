@@ -26,8 +26,8 @@ const UserImg = () => {
         className={classes.defaultImg}
       />
         <div
-          labelText={null} // ラベル
-          imageStyle={{
+          labeltext={null} // labelTextだとエラー
+          imagestyle={{    // imageStyleだとエラー
             width: "200px",
             height: "200px",
             borderRadius: "100px",

@@ -1,15 +1,17 @@
-import React, { useState } from 'react'
-import { Button } from 'semantic-ui-react'
+import React, { useState } from 'react';
+import { Button, Form } from 'semantic-ui-react';
+import { withRouter } from 'react-router-dom';
 
 import firebase from "../../CONFIG/firebase";
+import 'semantic-ui-css/semantic.min.css'
 
-const UserName = () => {
-  const [nowName, setNowName] = useState('')
+const UserName = (props) => {
+  const [currentName, setCurrentName] = useState('')
   const [userName, setUserName] = useState('')
 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      setNowName(user.displayName)
+      setCurrentName(user.displayName)
     } else {
       console.log('error')
     }
@@ -17,6 +19,10 @@ const UserName = () => {
 
   const handleSubmit = () => {
     firebase.auth().currentUser.updateProfile({displayName: userName})
+      .then(() => {
+        window.alert('ユーザーネームを保存しました。')
+        props.history.push('/Settings')
+      })
       .catch(error => {
         console.log(error)
       })
@@ -25,10 +31,11 @@ const UserName = () => {
   return (
     <div style={{marginBottom: '20px'}}>
       <p style={{marginBottom: '10px'}}>User Name</p>
-      <input
+      <Form.Input
+        icon='user'
+        iconPosition='left'
         type='text'
-        style={{marginBottom: '10px'}}
-        placeholder={nowName}
+        placeholder={currentName}
         onChange={e => {
           setUserName(e.target.value)
         }}
@@ -45,4 +52,4 @@ const UserName = () => {
   );
 };
 
-export default UserName;
+export default withRouter(UserName);
