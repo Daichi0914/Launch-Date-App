@@ -5,7 +5,7 @@ import { Link, Redirect } from "react-router-dom";
 
 import firebase from "../CONFIG/firebase";
 
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 import classes from "./SignIn.module.css";
 
 

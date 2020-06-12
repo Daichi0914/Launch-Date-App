@@ -28,7 +28,7 @@ export default class Settings extends Component {
         <Header />
         <Grid>
           <Grid.Column width={4}>
-            <Menu fluid vertical tabular style={{height: '473px', minWidth: '120px'}}>
+            <Menu fluid vertical tabular style={{height: '523px', minWidth: '120px'}}>
               <Menu.Item
                 name='Account'
                 active={activeItem === 'Account'}
@@ -54,7 +54,7 @@ export default class Settings extends Component {
           <Grid.Column
             stretched
             width={12}
-            style={{height: '500px'}}
+            style={{height: '550px'}}
           >
             <Segment style={{width: '95%', minWidth: '675px'}}>
               {menu()}

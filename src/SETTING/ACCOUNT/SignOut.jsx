@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { AuthContext } from "../../AUTH/AuthService";
 import { Button } from 'semantic-ui-react'
+import { Redirect } from 'react-router-dom';
 
 import firebase from "../../CONFIG/firebase";
-import { Redirect } from 'react-router-dom';
 
 
 const SignOut = () => {
@@ -22,7 +22,7 @@ const SignOut = () => {
   }
 
   return (
-    <div>
+    <div style={{marginTop: '40px'}}>
       <Button negative onClick={() => {signOutSwitch()}}>Sign Out</Button>
     </div>
   );
