@@ -1,9 +1,10 @@
 import React from 'react'
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Top from "./TOP/Top";
 import SignIn from "./AUTH/SignIn";
 import SignUp from "./AUTH/SignUp";
 import SignedInRoute from './AUTH/SignedInRoute';
+import Top from "./TOP/Top";
+import MyList from './MY_LIST/MyList';
 import Settings from "./SETTING/Settings";
 
 import { AuthProvider } from "./AUTH/AuthService";
@@ -22,7 +23,8 @@ const App = () => {
         <Route exact path='/SignIn' component={SignIn} />
         <Route exact path='/SignUp' component={SignUp} />
         <SignedInRoute exact path='/Launch-Date-App' component={Top} />
-        <Route exact path='/Settings' component={Settings} />
+        {/* <Route exact path='/MyList' component={MyList} /> */}
+        {/* <Route exact path='/Settings' component={Settings} /> */}
       </Router>
     </AuthProvider>
   );
