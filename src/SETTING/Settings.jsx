@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Grid, Menu, Segment } from 'semantic-ui-react'
-import Header from "../HEADER/Header";
+import HeaderSettings from "../HEADER/HeaderSettings";
 import Account from "./ACCOUNT/Account";
 import Notice from "./NOTICE/Notice";
 
@@ -25,7 +25,7 @@ export default class Settings extends Component {
 
     return (
       <>
-        <Header />
+        <HeaderSettings />
         <Grid>
           <Grid.Column width={4}>
             <Menu fluid vertical tabular style={{height: '523px', minWidth: '120px'}}>

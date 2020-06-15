@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import 'semantic-ui-css/semantic.min.css';
 
 export default class Header extends Component {
-  state = { activeItem: 'home' }
+  state = { activeItem: 'Top' }
 
   handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
@@ -20,27 +20,29 @@ export default class Header extends Component {
           <Link to='/Launch-Date-App'>
             <object>
               <Menu.Item
-                name='home'
-                active={activeItem === 'home'}
+                name='Top'
+                icon='home'
+                active={activeItem === 'Top'}
                 onClick={this.handleItemClick}
               />
             </object>
           </Link>
           <Menu.Item
-            name='messages'
-            active={activeItem === 'messages'}
+            name='Messages'
+            active={activeItem === 'Messages'}
             onClick={this.handleItemClick}
           />
           <Menu.Item
-            name='myPage'
-            active={activeItem === 'myPage'}
+            name='MyPage'
+            active={activeItem === 'MyPage'}
             onClick={this.handleItemClick}
           />
           <Link to='/Settings'>
             <object>
               <Menu.Item
-                name='setting'
-                active={activeItem === 'setting'}
+                name='Settings'
+                icon='setting'
+                active={activeItem === 'Settings'}
                 onClick={this.handleItemClick}
               />
             </object>

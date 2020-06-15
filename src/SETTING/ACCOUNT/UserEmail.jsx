@@ -13,6 +13,8 @@ const UserEmail = () => {
   const [isOpen, setIsOpen] = useState(false)
 
 
+  const user = useContext(AuthContext)
+
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
       setCurrentEmail(user.email)
@@ -20,8 +22,6 @@ const UserEmail = () => {
       console.log('error')
     }
   });
-
-  const user = useContext(AuthContext)
 
   const handleSignIn = () => {
     // e.preventDefault()
