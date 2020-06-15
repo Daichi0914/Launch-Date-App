@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Menu, Segment } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-// import Settings from '../SETTING/Settings';
-// import Home from "../HOME/Home";
+import { Menu, Segment, Grid } from 'semantic-ui-react';
+// import { Link } from 'react-router-dom';
+import Top from "../TOP/Top";
+import Settings from '../SETTING/Settings';
 
 import 'semantic-ui-css/semantic.min.css';
 
@@ -14,41 +14,50 @@ export default class Header extends Component {
   render() {
     const { activeItem } = this.state
 
+    const menu = () => {
+      if (activeItem === 'Top') {
+        return <Top />
+      }
+      if (activeItem === 'Settings') {
+        return <Settings />
+      }
+    }
+
     return (
-      <Segment inverted style={{borderRadius: '0'}}>
-        <Menu inverted pointing secondary>
-          <Link to='/Launch-Date-App'>
-            <object>
-              <Menu.Item
-                name='Top'
-                icon='home'
-                active={activeItem === 'Top'}
-                onClick={this.handleItemClick}
-              />
-            </object>
-          </Link>
-          <Menu.Item
-            name='Messages'
-            active={activeItem === 'Messages'}
-            onClick={this.handleItemClick}
-          />
-          <Menu.Item
-            name='MyPage'
-            active={activeItem === 'MyPage'}
-            onClick={this.handleItemClick}
-          />
-          <Link to='/Settings'>
-            <object>
-              <Menu.Item
-                name='Settings'
-                icon='setting'
-                active={activeItem === 'Settings'}
-                onClick={this.handleItemClick}
-              />
-            </object>
-          </Link>
-        </Menu>
-      </Segment>
+      <div>
+        <Segment inverted style={{borderRadius: '0'}}>
+          <Menu inverted pointing secondary>
+            <Menu.Item
+              name='Top'
+              icon='home'
+              active={activeItem === 'Top'}
+              onClick={this.handleItemClick}
+            />
+            <Menu.Item
+              name='MyList'
+              icon='file alternate outline'
+              active={activeItem === 'MyList'}
+              onClick={this.handleItemClick}
+            />
+            <Menu.Item
+              name='Settings'
+              icon='setting'
+              active={activeItem === 'Settings'}
+              onClick={this.handleItemClick}
+              Component={Settings}
+            />
+          </Menu>
+        </Segment>
+        <Grid
+            stretched
+            // width={12}
+            // style={{height: '550px'}}
+          >
+            <Segment style={{width: '95%', minWidth: '675px'}}>
+              {/* {menu()} */}
+            </Segment>
+        </Grid>
+      </div>
     );
   };
 };
