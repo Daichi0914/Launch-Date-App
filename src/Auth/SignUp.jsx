@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from "./AuthService";
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react';
 import { Link } from "react-router-dom";
+import { withRouter } from 'react-router';
 
 import firebase from "../CONFIG/firebase";
 
@@ -92,4 +93,4 @@ const SignUp = (props) => {
   )
 }
 
-export default SignUp;
+export default withRouter(SignUp);

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "./AuthService";
 import { Button, Divider, Form, Grid, Segment, Header, Icon, Modal } from 'semantic-ui-react';
+import { withRouter } from 'react-router';
 
 import { Link, Redirect } from "react-router-dom";
 
@@ -128,4 +129,4 @@ const SignIn = ({ history }) => {
   )
 }
 
-export default SignIn;
+export default withRouter(SignIn);
