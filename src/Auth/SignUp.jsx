@@ -1,24 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { AuthContext } from "./AuthService";
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react';
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 import firebase from "../CONFIG/firebase";
 
 import 'semantic-ui-css/semantic.min.css'
 import classes from './SignUp.module.css';
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [email, setEmail] = useState('')
   const [pass, setPass] = useState('')
   const [userName, setUserName] = useState('')
 
+  const user = useContext(AuthContext)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     firebase.auth().createUserWithEmailAndPassword(email, pass)
       .then(() => {firebase.auth().currentUser.updateProfile({displayName: userName})})
+      .then(() => {
+        window.alert('登録が完了しました。')
+        props.history.push('/SignIn')
+      })
       .catch(error => {
         console.log(error)
+        if (user.email === email) {
+          window.alert('このメールアドレスは既に登録されています。')
+        } else {
+          window.alert('必要な情報を入力して下さい。')
+        }
       })
   };
 

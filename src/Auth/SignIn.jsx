@@ -26,9 +26,9 @@ const SignIn = ({ history }) => {
 
   const user = useContext(AuthContext)
 
-  if (user) {
-    return <Redirect to="/Launch-Date-App" />
-  }
+  // if (user) {
+  //   return <Redirect to="/Launch-Date-App" />
+  // }
 
   return (
     <div className={classes.allWrap}>
