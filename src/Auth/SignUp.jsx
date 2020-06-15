@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "./AuthService";
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react';
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import firebase from "../CONFIG/firebase";
 
@@ -39,7 +39,7 @@ const SignUp = (props) => {
       <Segment placeholder>
         <Grid columns={2} relaxed='very' stackable>
           <Grid.Column>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit} className={classes.Form}>
               <h2 className={classes.logo}>Sign Up</h2>
               <Form.Input
                 icon='user'
