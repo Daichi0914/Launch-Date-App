@@ -2,7 +2,7 @@ import React, { useState } from "react";
 // import FileInputComponent from "react-file-input-previews-base64";
 // import { Button } from 'semantic-ui-react'
 
-import firebase from "../../CONFIG/firebase";
+import firebase from "../../../CONFIG/firebase";
 import Avatar from 'react-avatar';
 import classes from "./UserImg.module.css";
 

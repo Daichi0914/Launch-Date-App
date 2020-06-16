@@ -1,8 +1,8 @@
 import React, { useState, useContext } from 'react';
-import { AuthContext } from "../../AUTH/AuthService";
+import { AuthContext } from "../../../AUTH/AuthService";
 import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react';
 
-import firebase from "../../CONFIG/firebase";
+import firebase from "../../../CONFIG/firebase";
 import classes from './UserPass.module.css';
 import 'semantic-ui-css/semantic.min.css';
 

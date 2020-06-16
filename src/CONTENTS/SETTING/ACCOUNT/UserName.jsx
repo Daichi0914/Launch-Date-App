@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Form } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom';
 
-import firebase from "../../CONFIG/firebase";
+import firebase from "../../../CONFIG/firebase";
 import 'semantic-ui-css/semantic.min.css'
 
 const UserName = (props) => {

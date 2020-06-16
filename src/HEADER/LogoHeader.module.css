@@ -1,0 +1,16 @@
+.titleDiv {
+  background-color: #000;
+  height: 50px;
+  padding-top: 12px;
+  padding-left: 20px;
+}
+
+.title {
+  width: 201px;
+  font-family: 'Canaro';
+  color: #FF9900;
+}
+
+:hover .title {
+  /* cursor: pointer; */
+}

@@ -10,6 +10,7 @@ const AuthProvider = ({ children }) => {
     const test = firebase.auth().onAuthStateChanged(user => {
       setUser(user)
     })
+
     return () => {
       test()
     }

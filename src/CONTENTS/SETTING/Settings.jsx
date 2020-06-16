@@ -1,32 +1,22 @@
 import React, { Component } from 'react';
 import { Grid, Menu, Segment } from 'semantic-ui-react';
-import HeaderTop from "../HEADER/HeaderTop";
-import Account from "./ACCOUNT/Account";
-import Notice from "./NOTICE/Notice";
+import SettingContents from './SettingContents';
 
 import 'semantic-ui-css/semantic.min.css';
 
 export default class Settings extends Component {
   state = { activeItem: 'Account' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name })
+  }
 
   render() {
     const { activeItem } = this.state
 
-    const menu = () => {
-      if (activeItem === 'Account') {
-        return <Account />
-      }
-      if (activeItem === 'Notice') {
-        return <Notice />
-      }
-    }
-
     return (
       <>
-        <HeaderTop />
-        <Grid>
+        <Grid style={{marginTop: '1px'}}>
           <Grid.Column width={4}>
             <Menu fluid vertical tabular style={{height: '523px', minWidth: '120px'}}>
               <Menu.Item
@@ -39,7 +29,7 @@ export default class Settings extends Component {
                 active={activeItem === 'Notice'}
                 onClick={this.handleItemClick}
               />
-              <Menu.Item
+              {/* <Menu.Item
                 name='companies'
                 active={activeItem === 'companies'}
                 onClick={this.handleItemClick}
@@ -48,7 +38,7 @@ export default class Settings extends Component {
                 name='links'
                 active={activeItem === 'links'}
                 onClick={this.handleItemClick}
-              />
+              /> */}
             </Menu>
           </Grid.Column>
           <Grid.Column
@@ -57,7 +47,7 @@ export default class Settings extends Component {
             style={{height: '550px'}}
           >
             <Segment style={{width: '95%', minWidth: '675px'}}>
-              {menu()}
+              <SettingContents activeItem={activeItem} />
             </Segment>
           </Grid.Column>
         </Grid>
