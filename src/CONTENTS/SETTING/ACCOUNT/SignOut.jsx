@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import { AuthContext } from "../../AUTH/AuthService";
+import { AuthContext } from "../../../AUTH/AuthService";
 import { Button } from 'semantic-ui-react'
 import { Redirect } from 'react-router-dom';
 
-import firebase from "../../CONFIG/firebase";
+import firebase from "../../../CONFIG/firebase";
 
 
 const SignOut = () => {

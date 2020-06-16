@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
-import { Menu, Segment, Grid } from 'semantic-ui-react';
-// import { Link } from 'react-router-dom';
-import Top from "../TOP/Top";
-import Settings from '../SETTING/Settings';
+import { Menu, Segment, Button, Icon } from 'semantic-ui-react';
+import LogoHeader from './LogoHeader';
 
 import 'semantic-ui-css/semantic.min.css';
 
 export default class Header extends Component {
   state = { activeItem: 'Top' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name })
+    this.props.setMenuClick(name)
+  }
 
   render() {
     const { activeItem } = this.state
 
-    const menu = () => {
-      if (activeItem === 'Top') {
-        return <Top />
-      }
-      if (activeItem === 'Settings') {
-        return <Settings />
-      }
-    }
+    // const { setMenuClick } = this.props
 
     return (
       <div>
-        <Segment inverted style={{borderRadius: '0'}}>
+        <LogoHeader />
+        <Segment inverted style={{borderRadius: '0', marginTop: '0', padding: '0 14px'}}>
           <Menu inverted pointing secondary>
             <Menu.Item
               name='Top'
@@ -44,19 +39,14 @@ export default class Header extends Component {
               icon='setting'
               active={activeItem === 'Settings'}
               onClick={this.handleItemClick}
-              Component={Settings}
             />
+            <div style={{width: '118px', paddingTop: '1px', position: 'absolute', right: '0', marginRight: '15px'}}>
+              <Button basic inverted color='red'>
+                <Icon name='sign-out' />Sign Out
+              </Button>
+            </div>
           </Menu>
         </Segment>
-        <Grid
-            stretched
-            // width={12}
-            // style={{height: '550px'}}
-          >
-            <Segment style={{width: '95%', minWidth: '675px'}}>
-              {/* {menu()} */}
-            </Segment>
-        </Grid>
       </div>
     );
   };
