@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Menu, Segment, Button, Icon } from 'semantic-ui-react';
+import { Menu, Segment } from 'semantic-ui-react';
 import LogoHeader from './LogoHeader';
+import SignOut from '../HEADER/SignOut';
 
 import 'semantic-ui-css/semantic.min.css';
 
@@ -14,8 +15,6 @@ export default class Header extends Component {
 
   render() {
     const { activeItem } = this.state
-
-    // const { setMenuClick } = this.props
 
     return (
       <div>
@@ -40,10 +39,14 @@ export default class Header extends Component {
               active={activeItem === 'Settings'}
               onClick={this.handleItemClick}
             />
-            <div style={{width: '118px', paddingTop: '1px', position: 'absolute', right: '0', marginRight: '15px'}}>
-              <Button basic inverted color='red'>
-                <Icon name='sign-out' />Sign Out
-              </Button>
+            <div style={{
+              width: '118px',
+              paddingTop: '1px',
+              position: 'absolute',
+              right: '0',
+              marginRight: '15px'
+            }}>
+              <SignOut />
             </div>
           </Menu>
         </Segment>
