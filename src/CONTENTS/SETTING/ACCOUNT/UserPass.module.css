@@ -1,6 +1,3 @@
-/* .underline {
-  text-decoration: underline;
-} */
 .underline:hover {
   cursor: pointer;
   color: rgb(65, 125, 255);

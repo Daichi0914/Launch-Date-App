@@ -4,9 +4,6 @@ import Notice from "./NOTICE/Notice";
 
 const SettingContents = ({ activeItem }) => {
   console.log(activeItem)
-  // return (
-  //   <Account />
-  // )
   if (activeItem === 'Account') {
     return <Account />
   }

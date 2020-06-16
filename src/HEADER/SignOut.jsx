@@ -1,7 +1,5 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom';
-// import { Redirect } from 'react-router-dom';
-// import { AuthContext } from "../AUTH/AuthService";
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
 import firebase from "../CONFIG/firebase";
@@ -19,12 +17,6 @@ const SignOut = (props) => {
       console.log(`サインアウト時にエラーが発生しました (${error})`);
     });
   };
-
-  // const user = useContext(AuthContext)
-
-  // if (!user) {
-  //   return <Redirect to='/SignIn' />
-  // }
 
   return (
     <>
