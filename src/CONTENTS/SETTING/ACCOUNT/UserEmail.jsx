@@ -66,7 +66,7 @@ const UserEmail = () => {
           }
         }}>OK</Button>
       </div>
-      <Modal size='mini' open={isOpen}>
+      <Modal size='tiny' open={isOpen}>
         <Header
           content='User Password'
           className={classes.modalTitle}
