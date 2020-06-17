@@ -1,11 +1,13 @@
 import React from 'react'
-// import { Link } from "react-router-dom";
+import TopMenu from './TopMenu';
+import TopContents from './TopContents';
 
 const Top = () => {
   return (
-    <>
-      <div>aaa</div>
-    </>
+    <div style={{display: 'flex', height: '100vh'}}>
+      <TopMenu />
+      <TopContents />
+    </div>
   );
 };
 

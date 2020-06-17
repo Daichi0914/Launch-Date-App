@@ -17,7 +17,7 @@ export default class Header extends Component {
     const { activeItem } = this.state
 
     return (
-      <div>
+      <div  style={{position: 'fixed', width: '100vw', height: '91.97px', zIndex: '100'}}>
         <LogoHeader />
         <Segment inverted style={{borderRadius: '0', marginTop: '0', padding: '0 14px'}}>
           <Menu inverted pointing secondary>
