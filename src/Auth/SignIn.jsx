@@ -1,8 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AuthContext } from "./AuthService";
 import { Button, Divider, Form, Grid, Segment, Header, Icon, Modal } from 'semantic-ui-react';
-// import { withRouter } from 'react-router';
-
 import { Link, Redirect, withRouter } from "react-router-dom";
 
 import firebase from "../CONFIG/firebase";
@@ -22,6 +20,7 @@ const SignIn = ({ history }) => {
     firebase.auth().signInWithEmailAndPassword(email, pass)
       .then(() => {
         history.push('/Launch-Date-App')
+        console.log('サインイン完了')
       })
       .catch(() => {
         alert('メールアドレスかパスワードが間違っています。')
@@ -129,5 +128,4 @@ const SignIn = ({ history }) => {
   )
 }
 
-// export default SignIn;
 export default withRouter(SignIn);
