@@ -15,7 +15,7 @@ export default class Settings extends Component {
     const { activeItem } = this.state
 
     return (
-      <>
+      <div style={{paddingTop: '91.97px'}}>
         <Grid style={{marginTop: '1px'}}>
           <Grid.Column width={4}>
             <Menu fluid vertical tabular style={{height: '523px', minWidth: '120px'}}>
@@ -51,7 +51,7 @@ export default class Settings extends Component {
             </Segment>
           </Grid.Column>
         </Grid>
-      </>
+      </div>
     );
   };
 };

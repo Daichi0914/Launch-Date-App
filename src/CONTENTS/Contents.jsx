@@ -4,7 +4,6 @@ import MyList from './MY_LIST/MyList';
 import Settings from './SETTING/Settings';
 
 const Contents = ({ menuClick }) => {
-  console.log(menuClick)
   if (menuClick === 'Top') {
     return <Top />
   }
