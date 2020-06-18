@@ -13,8 +13,8 @@ const SignOut = (props) => {
 
   const signOutButton = () => {
     firebase.auth().signOut().then(()=>{
-      props.history.push('/SignIn')
       console.log("サインアウトしました");
+      props.history.push('/SignIn');
     }).catch( (error)=>{
       console.log(`サインアウト時にエラーが発生しました (${error})`);
     });

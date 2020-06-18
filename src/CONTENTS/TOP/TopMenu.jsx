@@ -1,44 +1,53 @@
 import React, { Component } from 'react'
-import { Input, Label, Menu } from 'semantic-ui-react'
+import { Input, Menu } from 'semantic-ui-react'
 
 export default class TopMenu extends Component {
-  state = { activeItem: 'inbox' }
+  state = { activeItem: 'trend' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => {
+    this.setState({ activeItem: name })
+    this.props.setContents(name)
+  }
 
   render() {
     const { activeItem } = this.state
 
     return (
-      <Menu size='large' vertical>
+      <Menu size='large' vertical style={{
+        borderRadius: '0',
+        height: '100vh',
+        borderBottom: 'solid 1px rgba(34,36,38,.15)',
+        zIndex: '100'
+      }}>
         <Menu.Item>
-          <Input icon='search' placeholder='Search mail...' />
+          <Input icon='search' placeholder='Search ...' />
         </Menu.Item>
         <Menu.Item
-          name='inbox'
-          active={activeItem === 'inbox'}
+          name='trend'
+          active={activeItem === 'trend'}
           onClick={this.handleItemClick}
         >
-          {/* <Label color='teal'>1</Label> */}
-          Inbox
-        </Menu.Item>
-
-        <Menu.Item
-          name='spam'
-          active={activeItem === 'spam'}
-          onClick={this.handleItemClick}
-        >
-          {/* <Label>51</Label> */}
-          Spam
+          月間トレンド
         </Menu.Item>
 
         <Menu.Item
-          name='updates'
-          active={activeItem === 'updates'}
+          name='release'
+          active={activeItem === 'release'}
           onClick={this.handleItemClick}
         >
-          {/* <Label>1</Label> */}
-          Updates
+          今月の作品
+        </Menu.Item>
+
+        <Menu.Item
+          name='works'
+          style={{
+            borderBottom: 'solid 1px rgba(34,36,38,.15)',
+            borderRadius: '0'
+          }}
+          active={activeItem === 'works'}
+          onClick={this.handleItemClick}
+        >
+          作品一覧
         </Menu.Item>
       </Menu>
     )

@@ -17,7 +17,7 @@ export default class Header extends Component {
     const { activeItem } = this.state
 
     return (
-      <div  style={{position: 'fixed', width: '100vw', height: '91.97px', zIndex: '100'}}>
+      <div  style={{position: 'fixed', width: '100%', height: '91.97px', zIndex: '100'}}>
         <LogoHeader />
         <Segment inverted style={{borderRadius: '0', marginTop: '0', padding: '0 14px'}}>
           <Menu inverted pointing secondary>
@@ -44,7 +44,7 @@ export default class Header extends Component {
               paddingTop: '1px',
               position: 'absolute',
               right: '0',
-              marginRight: '15px'
+              marginRight: '15px',
             }}>
               <SignOut />
             </div>
