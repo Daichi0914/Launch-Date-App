@@ -6,10 +6,10 @@ import UserPass from "./UserPass";
 import classes from "./UserInfo.module.css";
 
 
-const UserInfo = () => {
+const UserInfo = ({ handleSaveClick }) => {
   return (
     <div className={classes.info}>
-      <UserName />
+      <UserName handleSaveClick={handleSaveClick} />
       <UserEmail />
       <UserPass />
     </div>

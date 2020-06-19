@@ -16,7 +16,7 @@ const UserPass = () => {
 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      console.log('good')
+      console.log('サインイン中のユーザ情報を取得しました')
     } else {
       console.log('error')
     }
