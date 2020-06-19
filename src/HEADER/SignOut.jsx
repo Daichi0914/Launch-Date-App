@@ -18,7 +18,7 @@ const SignOut = () => {
       console.log(`サインアウト時にエラーが発生しました (${error})`);
     });
   };
-  
+
   const user = useContext(AuthContext)
 
   if (!user) {
