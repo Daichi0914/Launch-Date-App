@@ -2,13 +2,12 @@ import React from 'react';
 import { Grid } from 'semantic-ui-react';
 import WorksCard from '../TOP_LIST/WorksCard';
 
+import classes from './list.module.css';
+
 const WorksList = () => {
   return (
-    <div style={{
-      height: '100%',
-      padding: '25px 25px 0 280px',
-    }}>
-      <Grid columns={5} divided>
+    <div className={classes.list}>
+      <Grid columns={4}>
         {/* 以下mapを使う */}
         <Grid.Row>
           <Grid.Column>
@@ -26,15 +25,33 @@ const WorksList = () => {
           <Grid.Column>
             <WorksCard />
           </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
           <Grid.Column>
             <WorksCard />
           </Grid.Column>
-        </Grid.Row>
-
-        <Grid.Row>
+          <Grid.Column>
+            <WorksCard />
+          </Grid.Column>
+          <Grid.Column>
+            <WorksCard />
+          </Grid.Column>
+          <Grid.Column>
+            <WorksCard />
+          </Grid.Column>
+          <Grid.Column>
+            <WorksCard />
+          </Grid.Column>
+          <Grid.Column>
+            <WorksCard />
+          </Grid.Column>
+          <Grid.Column>
+            <WorksCard />
+          </Grid.Column>
+          <Grid.Column>
+            <WorksCard />
+          </Grid.Column>
+          <Grid.Column>
+            <WorksCard />
+          </Grid.Column>
           <Grid.Column>
             <WorksCard />
           </Grid.Column>

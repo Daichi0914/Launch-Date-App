@@ -5,10 +5,11 @@ import faker from 'faker';
 import 'semantic-ui-css/semantic.min.css';
 
 const WorksList = () => (
-  <Card>
+  <Card style={{marginTop: '20px'}}>
     <Image src={faker.image.avatar()} wrapped ui={false} />
     <Card.Content>
       <Card.Header>作品名</Card.Header>
+      <Card.Meta>作者</Card.Meta>
       <Card.Meta>全＊＊巻</Card.Meta>
       <Card.Meta>出版社</Card.Meta>
       <Card.Meta>連載中・完結済</Card.Meta>

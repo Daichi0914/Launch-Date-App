@@ -1,0 +1,7 @@
+.list {
+  height: 100%;
+  width: 85vw;
+  margin: 0 auto;
+  padding: 5px 25px 0 280px;
+  display: flex;
+}
