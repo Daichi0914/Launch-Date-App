@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { AuthContext } from "../AUTH/AuthService";
@@ -18,7 +18,7 @@ const SignOut = () => {
       console.log(`サインアウト時にエラーが発生しました (${error})`);
     });
   };
-
+  
   const user = useContext(AuthContext)
 
   if (!user) {
