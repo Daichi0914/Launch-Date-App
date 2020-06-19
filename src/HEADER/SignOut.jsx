@@ -22,7 +22,7 @@ const SignOut = () => {
   const user = useContext(AuthContext)
 
   if (!user) {
-    return <Redirect to='/Launch-Date-App' />
+    return <Redirect to='/SignIn' />
   }
 
   return (
