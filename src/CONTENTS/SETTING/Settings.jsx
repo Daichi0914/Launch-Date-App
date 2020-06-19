@@ -11,6 +11,11 @@ export default class Settings extends Component {
     this.setState({ activeItem: name })
   }
 
+  // UserName変更時にAccountを再レンダリングする関数
+  handleSaveClick = (name) => {
+    this.setState({ activeItem: name })
+  }
+
   render() {
     const { activeItem } = this.state
 
@@ -47,7 +52,7 @@ export default class Settings extends Component {
             style={{height: '550px'}}
           >
             <Segment style={{width: '95%', minWidth: '675px'}}>
-              <SettingContents activeItem={activeItem} />
+              <SettingContents activeItem={activeItem} handleSaveClick={this.handleSaveClick} />
             </Segment>
           </Grid.Column>
         </Grid>
