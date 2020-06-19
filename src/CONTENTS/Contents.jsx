@@ -3,6 +3,8 @@ import Top from './TOP/Top';
 import MyList from './MY_LIST/MyList';
 import Settings from './SETTING/Settings';
 
+import axios from 'axios'
+
 const Contents = ({ menuClick }) => {
   if (menuClick === 'Top') {
     return <Top />

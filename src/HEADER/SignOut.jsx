@@ -1,22 +1,29 @@
 import React, { useState } from 'react'
 import { withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
+import { AuthContext } from "../AUTH/AuthService";
 import { Button, Header, Icon, Modal } from 'semantic-ui-react'
 
 import firebase from "../CONFIG/firebase";
 import 'semantic-ui-css/semantic.min.css';
 
 
-const SignOut = (props) => {
+const SignOut = () => {
   const [isOpen, setIsOpen] = useState(false)
 
   const signOutButton = () => {
     firebase.auth().signOut().then(()=>{
       console.log("サインアウトしました");
-      props.history.push('/SignIn');
     }).catch( (error)=>{
       console.log(`サインアウト時にエラーが発生しました (${error})`);
     });
   };
+  
+  const user = useContext(AuthContext)
+
+  if (!user) {
+    return <Redirect to='/SignIn' />
+  }
 
   return (
     <>

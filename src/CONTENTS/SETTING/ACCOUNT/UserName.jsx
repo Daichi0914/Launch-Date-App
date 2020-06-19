@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import firebase from "../../../CONFIG/firebase";
 import 'semantic-ui-css/semantic.min.css'
 
-const UserName = (props) => {
+const UserName = () => {
   const [currentName, setCurrentName] = useState('')
   const [userName, setUserName] = useState('')
 
@@ -21,7 +21,6 @@ const UserName = (props) => {
     firebase.auth().currentUser.updateProfile({displayName: userName})
       .then(() => {
         window.alert('ユーザーネームを保存しました。')
-        props.history.push('/Settings')
       })
       .catch(error => {
         console.log(error)
