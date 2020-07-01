@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import SignIn from "./AUTH/SignIn";
 import SignUp from "./AUTH/SignUp";
 import SignedInRoute from './AUTH/SignedInRoute';
@@ -21,12 +21,14 @@ const App = () => {
   return (
     <AuthProvider>
       <Router>
-        <Route exact path='/SignIn' component={SignIn} />
-        <Route exact path='/SignUp' component={SignUp} />
-        <SignedInRoute exact path='/Launch-Date-App' component={Contents}>
-          <Header setMenuClick={setMenuClick} />
-          <Contents menuClick={menuClick} />
-        </SignedInRoute>
+        <Switch>
+          <Route exact path='/SignIn' component={SignIn} />
+          <Route exact path='/SignUp' component={SignUp} />
+          <SignedInRoute exact path='/Launch-Date-App' component={Contents}>
+            <Header setMenuClick={setMenuClick} />
+            <Contents menuClick={menuClick} />
+          </SignedInRoute>
+        </Switch>
       </Router>
     </AuthProvider>
   );
