@@ -6,20 +6,23 @@ import SignOut from '../HEADER/SignOut';
 import 'semantic-ui-css/semantic.min.css';
 
 export default class Header extends Component {
-  state = { activeItem: 'Top' }
+  state = { activeItem: 'Top' };
 
   handleItemClick = (e, { name }) => {
-    this.setState({ activeItem: name })
-    this.props.setMenuClick(name)
-  }
+    this.setState({ activeItem: name });
+    this.props.setMenuClick(name);
+  };
 
   render() {
-    const { activeItem } = this.state
+    const { activeItem } = this.state;
 
     return (
-      <div  style={{position: 'fixed', width: '100%', height: '91.97px', zIndex: '100'}}>
+      <div style={{ position: 'fixed', width: '100%', height: '91.97px', zIndex: '100' }}>
         <LogoHeader />
-        <Segment inverted style={{borderRadius: '0', marginTop: '0', padding: '0 14px'}}>
+        <Segment
+          inverted
+          style={{ borderRadius: '0', marginTop: '0', padding: '0 14px', backgroundColor: '#2a2a2a' }}
+        >
           <Menu inverted pointing secondary>
             <Menu.Item
               name='Top'
@@ -39,18 +42,20 @@ export default class Header extends Component {
               active={activeItem === 'Settings'}
               onClick={this.handleItemClick}
             />
-            <div style={{
-              width: '118px',
-              paddingTop: '1px',
-              position: 'absolute',
-              right: '0',
-              marginRight: '15px',
-            }}>
+            <div
+              style={{
+                width: '118px',
+                paddingTop: '1px',
+                position: 'absolute',
+                right: '0',
+                marginRight: '15px',
+              }}
+            >
               <SignOut />
             </div>
           </Menu>
         </Segment>
       </div>
     );
-  };
-};
+  }
+}
