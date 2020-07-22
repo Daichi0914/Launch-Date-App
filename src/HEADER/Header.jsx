@@ -21,7 +21,7 @@ export default class Header extends Component {
         <LogoHeader />
         <Segment
           inverted
-          style={{ borderRadius: '0', marginTop: '0', padding: '0 14px', backgroundColor: '#2a2a2a' }}
+          style={{ borderRadius: '0', marginTop: '0', padding: '0 14px', backgroundColor: '#2d2d2d' }}
         >
           <Menu inverted pointing secondary>
             <Menu.Item
