@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SignIn from "./AUTH/SignIn";
-import SignUp from "./AUTH/SignUp";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import SignIn from './AUTH/SignIn';
+import SignUp from './AUTH/SignUp';
 import SignedInRoute from './AUTH/SignedInRoute';
 import Header from './HEADER/Header';
 import Contents from './CONTENTS/Contents';
 
-import { AuthProvider } from "./AUTH/AuthService";
+import { AuthProvider } from './AUTH/AuthService';
 
-const styleLink = document.createElement("link");
-styleLink.rel = "stylesheet";
-styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
+const styleLink = document.createElement('link');
+styleLink.rel = 'stylesheet';
+styleLink.href =
+  'https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css';
 document.head.appendChild(styleLink);
 
 window.parent.document.body.style.zoom = 1.2;

@@ -1,39 +1,42 @@
 import React, { useState, useContext } from 'react';
-import { AuthContext } from "./AuthService";
+import { AuthContext } from './AuthService';
 import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router';
 
-import firebase from "../CONFIG/firebase";
+import firebase from '../CONFIG/firebase';
 
-import 'semantic-ui-css/semantic.min.css'
+import 'semantic-ui-css/semantic.min.css';
 import classes from './SignUp.module.css';
 
 const SignUp = (props) => {
-  const [email, setEmail] = useState('')
-  const [pass, setPass] = useState('')
-  const [userName, setUserName] = useState('')
+  const [email, setEmail] = useState('');
+  const [pass, setPass] = useState('');
+  const [userName, setUserName] = useState('');
 
-  const user = useContext(AuthContext)
+  const user = useContext(AuthContext);
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    firebase.auth().createUserWithEmailAndPassword(email, pass)
-      .then(() => {firebase.auth().currentUser.updateProfile({displayName: userName})})
+    e.preventDefault();
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, pass)
       .then(() => {
-        window.alert('登録が完了しました。')
-        props.history.push('/SignIn')
+        firebase.auth().currentUser.updateProfile({ displayName: userName });
       })
-      .catch(error => {
-        console.log(error)
+      .then(() => {
+        window.alert('登録が完了しました。');
+        props.history.push('/SignIn');
+      })
+      .catch((error) => {
+        console.log(error);
         if (user.email === email) {
-          window.alert('このメールアドレスは既に登録されています。')
+          window.alert('このメールアドレスは既に登録されています。');
         } else {
-          window.alert('必要な情報を入力して下さい。')
+          window.alert('必要な情報を入力して下さい。');
         }
-      })
+      });
   };
-
 
   return (
     <div className={classes.allWrap}>
@@ -48,8 +51,8 @@ const SignUp = (props) => {
                 label='User Name'
                 type='name'
                 placeholder='User Name'
-                onChange={e => {
-                  setUserName(e.target.value)
+                onChange={(e) => {
+                  setUserName(e.target.value);
                 }}
                 value={userName}
               />
@@ -59,8 +62,8 @@ const SignUp = (props) => {
                 label='E-mail'
                 type='email'
                 placeholder='E-mail'
-                onChange={e => {
-                  setEmail(e.target.value)
+                onChange={(e) => {
+                  setEmail(e.target.value);
                 }}
                 value={email}
               />
@@ -70,8 +73,8 @@ const SignUp = (props) => {
                 label='Password'
                 type='password'
                 placeholder='Password'
-                onChange={e => {
-                  setPass(e.target.value)
+                onChange={(e) => {
+                  setPass(e.target.value);
                 }}
                 value={pass}
               />
@@ -87,10 +90,12 @@ const SignUp = (props) => {
             </div>
           </Grid.Column>
         </Grid>
-        <Divider vertical className={classes.solid}>Or</Divider>
+        <Divider vertical className={classes.solid}>
+          Or
+        </Divider>
       </Segment>
     </div>
-  )
-}
+  );
+};
 
 export default withRouter(SignUp);
