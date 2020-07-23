@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Grid } from 'semantic-ui-react';
-import TrendCard from '../TOP_LIST/TrendCard';
+import ReleaseCard from '../TOP_CARD/ReleaseCard';
 import fakeData from '../../../API/fakeApi';
 
 import classes from './list.module.css';
 
-const TrendList = () => {
+const ReleaseList = () => {
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const TrendList = () => {
       <Grid columns={4} style={{ width: '100%' }}>
         <Grid.Row>
           {users
-            ? users.map((user, index) => <TrendCard user={user} index={index} />)
+            ? users.map((user, index) => <ReleaseCard user={user} index={index} />)
             : 'loading...'}
         </Grid.Row>
       </Grid>
@@ -33,4 +33,4 @@ const TrendList = () => {
   );
 };
 
-export default TrendList;
+export default ReleaseList;

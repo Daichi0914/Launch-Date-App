@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import firebase from '../CONFIG/firebase'
+import React, { useState, useEffect } from 'react';
+import firebase from '../CONFIG/firebase';
 
-const AuthContext = React.createContext()
+const AuthContext = React.createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      setUser(user)
-    })
+    const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+      setUser(user);
+    });
 
     return () => {
       // console.log('アンマウンティング')
-      unsubscribe()
-    }
-  }, [])
+      unsubscribe();
+    };
+  }, []);
 
   return (
     <AuthContext.Provider value={user}>
@@ -26,5 +26,5 @@ const AuthProvider = ({ children }) => {
 
 export {
   AuthContext,
-  AuthProvider,
+  AuthProvider
 };

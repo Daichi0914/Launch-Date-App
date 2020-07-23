@@ -1,24 +1,28 @@
-import React, { Component } from 'react'
-import { Input, Menu } from 'semantic-ui-react'
+import React, { Component } from 'react';
+import { Input, Menu } from 'semantic-ui-react';
 
 export default class TopMenu extends Component {
-  state = { activeItem: 'trend' }
+  state = { activeItem: 'trend' };
 
   handleItemClick = (e, { name }) => {
-    this.setState({ activeItem: name })
-    this.props.setContents(name)
-  }
+    this.setState({ activeItem: name });
+    this.props.setContents(name);
+  };
 
   render() {
-    const { activeItem } = this.state
+    const { activeItem } = this.state;
 
     return (
-      <Menu size='large' vertical style={{
-        borderRadius: '0',
-        height: '100vh',
-        borderBottom: 'solid 1px rgba(34,36,38,.15)',
-        zIndex: '100'
-      }}>
+      <Menu
+        size='large'
+        vertical
+        style={{
+          borderRadius: '0',
+          height: '100vh',
+          borderBottom: 'solid 1px rgba(34,36,38,.15)',
+          zIndex: '100',
+        }}
+      >
         <Menu.Item>
           <Input icon='search' placeholder='Search ...' />
         </Menu.Item>
@@ -42,7 +46,7 @@ export default class TopMenu extends Component {
           name='works'
           style={{
             borderBottom: 'solid 1px rgba(34,36,38,.15)',
-            borderRadius: '0'
+            borderRadius: '0',
           }}
           active={activeItem === 'works'}
           onClick={this.handleItemClick}
@@ -50,6 +54,6 @@ export default class TopMenu extends Component {
           作品一覧
         </Menu.Item>
       </Menu>
-    )
+    );
   }
 }

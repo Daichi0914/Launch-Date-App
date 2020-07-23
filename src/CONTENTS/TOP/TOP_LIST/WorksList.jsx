@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Grid } from 'semantic-ui-react';
-import WorksCard from '../TOP_LIST/WorksCard';
+import WorksCard from '../TOP_CARD/WorksCard';
 import fakeData from '../../../API/fakeApi';
 
 import classes from './list.module.css';
