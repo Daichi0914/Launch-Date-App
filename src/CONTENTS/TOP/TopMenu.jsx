@@ -17,8 +17,9 @@ export default class TopMenu extends Component {
         size='large'
         vertical
         style={{
-          borderRadius: '0',
+          width: '100%',
           height: '100vh',
+          borderRadius: '0',
           borderBottom: 'solid 1px rgba(34,36,38,.15)',
           zIndex: '100',
         }}
