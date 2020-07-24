@@ -1,16 +1,21 @@
 .titleDiv {
   background-color: #1f1f1f;
   height: 50px;
-  padding-top: 12px;
-  padding-left: 20px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .title {
-  width: 201px;
+  height: 100%;
   font-family: 'Canaro';
-  color: #FF9900;
+  color: #ff9900;
+  padding: 12px 0 0 20px;
 }
 
-/* :hover .title {
-  cursor: pointer;
+/* .title:hover {
+  color: #ff7700;
 } */
+
+.signOut {
+  padding: 7px 12px 0 0;
+}

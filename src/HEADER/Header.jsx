@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Menu, Segment } from 'semantic-ui-react';
 import LogoHeader from './LogoHeader';
-import SignOut from '../HEADER/SignOut';
 
 import 'semantic-ui-css/semantic.min.css';
 
@@ -42,17 +41,6 @@ export default class Header extends Component {
               active={activeItem === 'Settings'}
               onClick={this.handleItemClick}
             />
-            <div
-              style={{
-                width: '118px',
-                paddingTop: '1px',
-                position: 'absolute',
-                right: '0',
-                marginRight: '15px',
-              }}
-            >
-              <SignOut />
-            </div>
           </Menu>
         </Segment>
       </div>
