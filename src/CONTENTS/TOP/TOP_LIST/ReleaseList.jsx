@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Grid } from 'semantic-ui-react';
+import { Grid, Dimmer, Loader, Segment } from 'semantic-ui-react';
 import ReleaseCard from '../TOP_CARD/ReleaseCard';
 import fakeData from '../../../API/fakeApi';
 
@@ -24,9 +24,15 @@ const ReleaseList = () => {
     <div className={classes.list}>
       <Grid columns={4} style={{ width: '100%' }}>
         <Grid.Row>
-          {users
-            ? users.map((user, index) => <ReleaseCard user={user} index={index} />)
-            : 'loading...'}
+          {users ? (
+            users.map((user, index) => <ReleaseCard user={user} index={index} />)
+          ) : (
+            <Segment className={classes.loading}>
+              <Dimmer active inverted>
+                <Loader inverted content='Loading' />
+              </Dimmer>
+            </Segment>
+          )}
         </Grid.Row>
       </Grid>
     </div>

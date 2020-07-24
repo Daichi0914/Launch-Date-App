@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Icon, Image, Button } from 'semantic-ui-react';
+import { Card, Icon, Image, Button, Dimmer, Loader, Segment } from 'semantic-ui-react';
 import { Grid } from 'semantic-ui-react';
 import fakeData from '../../../API/fakeApi';
 
@@ -21,9 +21,19 @@ const WorksCard = ({ user, index }) => {
   }, [setPhotoUrl, index]);
 
   return (
-    <Grid.Column>
+    <Grid.Column style={{ minWidth: 190 }}>
       <Card style={{ marginTop: '20px' }}>
-        {photoUrl ? <Image src={photoUrl} wrapped ui={false} /> : 'loading...'}
+        <div style={{ width: '100%', minWidth: 140, height: 'auto' }}>
+          {photoUrl ? (
+            <Image src={photoUrl} wrapped ui={true} />
+          ) : (
+            <Segment style={{ width: '100%', height: 200, padding: 0, marginBottom: 0 }}>
+              <Dimmer active>
+                <Loader size='medium'>Loading</Loader>
+              </Dimmer>
+            </Segment>
+          )}
+        </div>
         <Card.Content>
           <Card.Header>{user.name}</Card.Header>
           <Card.Meta>{user.username}</Card.Meta>

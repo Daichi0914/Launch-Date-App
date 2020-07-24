@@ -6,7 +6,7 @@ const Top = () => {
   const [contents, setContents] = useState('trend');
 
   return (
-    <div style={{ display: 'flex', height: '100vh', paddingTop: '91.97px' }}>
+    <div style={{ display: 'flex', height: '100%', paddingTop: '91.97px' }}>
       <div style={{ position: 'fixed' }}>
         <TopMenu setContents={setContents} />
       </div>
