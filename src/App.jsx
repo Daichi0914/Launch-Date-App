@@ -13,7 +13,7 @@ styleLink.rel = "stylesheet";
 styleLink.href = "https://cdn.jsdelivr.net/npm/semantic-ui/dist/semantic.min.css";
 document.head.appendChild(styleLink);
 
-window.parent.document.body.style.zoom = 1.2;
+window.parent.document.body.style.zoom = 1.2; // 最初から120%で描画
 
 const App = () => {
   const [menuClick, setMenuClick] = useState('Top');
