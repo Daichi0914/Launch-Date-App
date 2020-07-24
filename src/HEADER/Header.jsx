@@ -5,20 +5,23 @@ import LogoHeader from './LogoHeader';
 import 'semantic-ui-css/semantic.min.css';
 
 export default class Header extends Component {
-  state = { activeItem: 'Top' }
+  state = { activeItem: 'Top' };
 
   handleItemClick = (e, { name }) => {
-    this.setState({ activeItem: name })
-    this.props.setMenuClick(name)
-  }
+    this.setState({ activeItem: name });
+    this.props.setMenuClick(name);
+  };
 
   render() {
-    const { activeItem } = this.state
+    const { activeItem } = this.state;
 
     return (
-      <div  style={{position: 'fixed', width: '100%', height: '91.97px', zIndex: '100'}}>
+      <div style={{ position: 'fixed', width: '100%', height: '91.97px', zIndex: '100' }}>
         <LogoHeader />
-        <Segment inverted style={{borderRadius: '0', marginTop: '0', padding: '0 14px'}}>
+        <Segment
+          inverted
+          style={{ borderRadius: '0', marginTop: '0', padding: '0 14px', backgroundColor: '#2d2d2d' }}
+        >
           <Menu inverted pointing secondary>
             <Menu.Item
               name='Top'
@@ -42,5 +45,5 @@ export default class Header extends Component {
         </Segment>
       </div>
     );
-  };
-};
+  }
+}

@@ -1,19 +1,17 @@
 import React from 'react';
 import Top from './TOP/Top';
 import MyList from './MY_LIST/MyList';
-import Settings from './SETTING/Settings';
-
-import axios from 'axios'
+import SettingsF from './SETTINGS/Settings';
 
 const Contents = ({ menuClick }) => {
   if (menuClick === 'Top') {
-    return <Top />
+    return <Top />;
   }
   if (menuClick === 'MyList') {
-    return <MyList />
+    return <MyList />;
   }
   if (menuClick === 'Settings') {
-    return <Settings />
+    return <SettingsF />;
   }
 };
 

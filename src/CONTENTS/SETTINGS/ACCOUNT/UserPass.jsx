@@ -16,7 +16,7 @@ const UserPass = () => {
 
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
-      console.log('good')
+      console.log('サインイン中のユーザ情報を取得しました')
     } else {
       console.log('error')
     }
@@ -65,7 +65,7 @@ const UserPass = () => {
       <p className={classes.underline} onClick={() => {setIsOpen(true)}}>
         <Icon name='hand point right outline' />User Password
       </p>
-      <Modal size='mini' open={isOpen}>
+      <Modal size='tiny' open={isOpen}>
         <Header
           content='User Password'
           className={classes.modalTitle}
