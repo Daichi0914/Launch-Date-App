@@ -6,26 +6,28 @@ import fakeData from '../../../API/fakeApi';
 import classes from './list.module.css';
 
 const ReleaseList = () => {
-  const [users, setUsers] = useState(null);
+  const [items, setItems] = useState(null);
 
   useEffect(() => {
     const releaseApi = async () => {
       try {
-        const users = await fakeData.users;
-        setUsers(users.data);
+        const items = await fakeData.users;
+        setItems(items.data);
       } catch (error) {
         console.log(error);
       }
     };
     releaseApi();
-  }, [setUsers]);
+  }, [setItems]);
 
   return (
     <div className={classes.list}>
       <Grid columns={4} style={{ width: '100%' }}>
         <Grid.Row>
-          {users ? (
-            users.map((user, index) => <ReleaseCard user={user} index={index} />)
+          {items ? (
+            items.map((item, index) => (
+              <ReleaseCard item={item} index={index} key={index} />
+            ))
           ) : (
             <Segment className={classes.loading}>
               <Dimmer active inverted>
