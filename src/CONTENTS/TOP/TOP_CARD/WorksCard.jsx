@@ -5,7 +5,7 @@ import fakeData from '../../../API/fakeApi';
 
 import 'semantic-ui-css/semantic.min.css';
 
-const WorksCard = ({ user, index }) => {
+const WorksCard = ({ item, index }) => {
   const [photoUrl, setPhotoUrl] = useState(null);
 
   useEffect(() => {
@@ -35,9 +35,9 @@ const WorksCard = ({ user, index }) => {
           )}
         </div>
         <Card.Content>
-          <Card.Header>{user.name}</Card.Header>
-          <Card.Meta>{user.username}</Card.Meta>
-          <Card.Meta>{user.phone}</Card.Meta>
+          <Card.Header>{item.name}</Card.Header>
+          <Card.Meta>{item.username}</Card.Meta>
+          <Card.Meta>{item.phone}</Card.Meta>
         </Card.Content>
         <Card.Content extra>
           <Button animated='fade' style={{ margin: '0 auto', width: '100%' }}>
