@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Dimmer, Loader, Segment } from 'semantic-ui-react';
-import ReleaseCard from '../TOP_CARD/ReleaseCard';
-// import rakutenApi from '../../../API/rakutenApi';
-import fakeApi from '../../../API/fakeApi';
+import Card from '../TOP_CARD/Card';
+import rakutenApi from '../../../API/rakutenApi';
 import InfiniteScroll from 'react-infinite-scroller';
 
 import classes from './list.module.css';
@@ -14,16 +13,16 @@ const ReleaseList = () => {
   const [isFetched, setIsFetched] = useState(false);
 
   useEffect(() => {
-    const releasedApi = async () => {
+    const releaseApi = async () => {
       try {
-        const items = await fakeApi.comics;
-        setItems(items.data);
+        const items = await rakutenApi.comics;
+        setItems(items.data.Items);
         setIsFetched(true);
       } catch (error) {
         console.log(error);
       }
     };
-    releasedApi();
+    releaseApi();
     return () => {
       setItems([]);
       setCurrentItems([]);
@@ -32,10 +31,9 @@ const ReleaseList = () => {
     };
   }, []);
 
-
   const current_item_count = currentItems.length;
-  const max_items = 10;
-  const page_item_size = 4;
+  const max_items = 30;
+  const page_item_size = 10;
 
   const loadItems = () => {
     if (current_item_count < max_items) {
@@ -50,7 +48,18 @@ const ReleaseList = () => {
   };
 
   const releaseItems = items ? (
-    currentItems.map((item, index) => <ReleaseCard item={item} index={index} key={index} />)
+    currentItems.map((item, index) => (
+      <Card
+        img={item.Item.largeImageUrl}
+        title={item.Item.title}
+        author={item.Item.author}
+        publisherName={item.Item.publisherName}
+        salesDate={item.Item.salesDate}
+        isbn={item.Item.isbn}
+        index={index}
+        key={index}
+      />
+    ))
   ) : (
     <Segment className={classes.loading}>
       <Dimmer active inverted>
@@ -71,7 +80,7 @@ const ReleaseList = () => {
     <div className={classes.list}>
       <InfiniteScroll
         pageStart={0}
-        loadMore={() => loadItems()}
+        loadMore={loadItems}
         hasMore={hasMoreItems}
         loader={pageLoader()}
       >

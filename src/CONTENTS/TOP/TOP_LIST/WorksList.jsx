@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Dimmer, Loader, Segment } from 'semantic-ui-react';
-import WorksCard from '../TOP_CARD/WorksCard';
-import fakeData from '../../../API/fakeApi';
+import Card from '../TOP_CARD/Card';
+import rakutenApi from '../../../API/rakutenApi';
 import InfiniteScroll from 'react-infinite-scroller';
 
 import classes from './list.module.css';
@@ -15,8 +15,8 @@ const ReleaseList = () => {
   useEffect(() => {
     const worksApi = async () => {
       try {
-        const items = await fakeData.users;
-        setItems(items.data);
+        const items = await rakutenApi.comics;
+        setItems(items.data.Items);
         setIsFetched(true);
       } catch (error) {
         console.log(error);
@@ -30,7 +30,6 @@ const ReleaseList = () => {
       setIsFetched(false);
     };
   }, []);
-
 
   const current_item_count = currentItems.length;
   const max_items = 10;
@@ -49,7 +48,17 @@ const ReleaseList = () => {
   };
 
   const worksItems = items ? (
-    currentItems.map((item, index) => <WorksCard item={item} index={index} key={index} />)
+    currentItems.map((item, index) => (
+      <Card
+        img={item.Item.largeImageUrl}
+        title={item.Item.title}
+        author={item.Item.author}
+        publisherName={item.Item.publisherName}
+        isbn={item.Item.isbn}
+        index={index}
+        key={index}
+      />
+    ))
   ) : (
     <Segment className={classes.loading}>
       <Dimmer active inverted>
@@ -70,7 +79,7 @@ const ReleaseList = () => {
     <div className={classes.list}>
       <InfiniteScroll
         pageStart={0}
-        loadMore={() => loadItems()}
+        loadMore={loadItems}
         hasMore={hasMoreItems}
         loader={pageLoader()}
       >

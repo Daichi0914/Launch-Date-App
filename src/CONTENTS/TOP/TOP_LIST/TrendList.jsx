@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Dimmer, Loader, Segment } from 'semantic-ui-react';
-import TrendCard from '../TOP_CARD/TrendCard';
-// import rakutenApi from '../../../API/rakutenApi';
-import fakeApi from '../../../API/fakeApi';
+import Card from '../TOP_CARD/Card';
+import rakutenApi from '../../../API/rakutenApi';
 import InfiniteScroll from 'react-infinite-scroller';
 
 import classes from './list.module.css';
@@ -16,8 +15,9 @@ const TrendList = () => {
   useEffect(() => {
     const trendApi = async () => {
       try {
-        let items = await fakeApi.users;
-        setItems(items.data);
+        const items = await rakutenApi.comics;
+        console.log(items);
+        setItems(items.data.Items);
         setIsFetched(true);
       } catch (error) {
         console.log(error);
@@ -33,8 +33,8 @@ const TrendList = () => {
   }, []);
 
   const current_item_count = currentItems.length;
-  const max_items = 10;
-  const page_item_size = 4;
+  const max_items = 300;
+  const page_item_size = 10;
 
   const loadItems = () => {
     if (current_item_count < max_items) {
@@ -49,7 +49,18 @@ const TrendList = () => {
   };
 
   const trendItems = items ? (
-    currentItems.map((item, index) => <TrendCard item={item} index={index} key={index} />)
+    currentItems.map((item, index) => (
+      <Card
+        img={item.Item.largeImageUrl}
+        title={item.Item.title}
+        author={item.Item.author}
+        publisherName={item.Item.publisherName}
+        salesDate={item.Item.salesDate}
+        isbn={item.Item.isbn}
+        index={index}
+        key={index}
+      />
+    ))
   ) : (
     <Segment className={classes.loading}>
       <Dimmer active inverted>
