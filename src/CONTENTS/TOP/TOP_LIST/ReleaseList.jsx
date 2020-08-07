@@ -1,45 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Dimmer, Loader, Segment } from 'semantic-ui-react';
-import ReleaseCard from '../TOP_CARD/ReleaseCard';
-// import rakutenApi from '../../../API/rakutenApi';
-import fakeApi from '../../../API/fakeApi';
+import Card from '../TOP_CARD/Card';
+import rakutenApi from '../../../API/rakutenApi';
 import InfiniteScroll from 'react-infinite-scroller';
 
 import classes from './list.module.css';
 
 const ReleaseList = () => {
   const [items, setItems] = useState([]);
+  const [copyItems, setCopyItems] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const [hasMoreItems, setHasMoreItems] = useState(true);
   const [isFetched, setIsFetched] = useState(false);
 
   useEffect(() => {
-    const releasedApi = async () => {
+    const releaseApi = async () => {
       try {
-        const items = await fakeApi.comics;
-        setItems(items.data);
+        const items = await rakutenApi.comics;
+        setItems(items.data.Items);
+        setCopyItems(items.data.Items.concat());
         setIsFetched(true);
       } catch (error) {
         console.log(error);
       }
     };
-    releasedApi();
+    releaseApi();
     return () => {
       setItems([]);
+      setCopyItems([]);
       setCurrentItems([]);
       setHasMoreItems(true);
       setIsFetched(false);
     };
   }, []);
 
-
   const current_item_count = currentItems.length;
-  const max_items = 10;
-  const page_item_size = 4;
+  const max_items = items.length;
+  const page_item_size = 10;
 
   const loadItems = () => {
     if (current_item_count < max_items) {
-      let deleteArr = items.splice(0, page_item_size);
+      let deleteArr = copyItems.splice(0, page_item_size);
 
       setTimeout(() => {
         setCurrentItems(currentItems.concat(deleteArr));
@@ -50,7 +51,18 @@ const ReleaseList = () => {
   };
 
   const releaseItems = items ? (
-    currentItems.map((item, index) => <ReleaseCard item={item} index={index} key={index} />)
+    currentItems.map((item, index) => (
+      <Card
+        img={item.Item.largeImageUrl}
+        title={item.Item.title}
+        author={item.Item.author}
+        publisherName={item.Item.publisherName}
+        salesDate={item.Item.salesDate}
+        isbn={item.Item.isbn}
+        index={index}
+        key={index}
+      />
+    ))
   ) : (
     <Segment className={classes.loading}>
       <Dimmer active inverted>
@@ -60,7 +72,7 @@ const ReleaseList = () => {
   );
 
   const pageLoader = () => (
-    <Loader active inline='centered' style={{ height: 80, marginTop: 50 }} />
+    <Loader active inline='centered' style={{ height: 80, marginTop: 50 }} key={2} />
   );
 
   if (!isFetched) {
@@ -71,7 +83,7 @@ const ReleaseList = () => {
     <div className={classes.list}>
       <InfiniteScroll
         pageStart={0}
-        loadMore={() => loadItems()}
+        loadMore={loadItems}
         hasMore={hasMoreItems}
         loader={pageLoader()}
       >
