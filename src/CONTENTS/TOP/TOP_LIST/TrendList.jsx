@@ -8,6 +8,7 @@ import classes from './list.module.css';
 
 const TrendList = () => {
   const [items, setItems] = useState([]);
+  const [copyItems, setCopyItems] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const [hasMoreItems, setHasMoreItems] = useState(true);
   const [isFetched, setIsFetched] = useState(false);
@@ -18,6 +19,7 @@ const TrendList = () => {
         const items = await rakutenApi.comics;
         console.log(items);
         setItems(items.data.Items);
+        setCopyItems(items.data.Items.concat());
         setIsFetched(true);
       } catch (error) {
         console.log(error);
@@ -26,6 +28,7 @@ const TrendList = () => {
     trendApi();
     return () => {
       setItems([]);
+      setCopyItems([]);
       setCurrentItems([]);
       setHasMoreItems(true);
       setIsFetched(false);
@@ -33,12 +36,12 @@ const TrendList = () => {
   }, []);
 
   const current_item_count = currentItems.length;
-  const max_items = 300;
+  const max_items = items.length;
   const page_item_size = 10;
 
   const loadItems = () => {
     if (current_item_count < max_items) {
-      let deleteArr = items.splice(0, page_item_size); // deleteArrにはデリートした方の配列が入る
+      let deleteArr = copyItems.splice(0, page_item_size); // deleteArrにはデリートした方の配列が入る
 
       setTimeout(() => {
         setCurrentItems(currentItems.concat(deleteArr));
@@ -47,6 +50,9 @@ const TrendList = () => {
       setHasMoreItems(false); // レンダリング時に
     }
   };
+
+  console.log(items);
+  console.log(currentItems);
 
   const trendItems = items ? (
     currentItems.map((item, index) => (
@@ -70,7 +76,7 @@ const TrendList = () => {
   );
 
   const pageLoader = () => (
-    <Loader active inline='centered' style={{ height: 80, marginTop: 50 }} />
+    <Loader active inline='centered' style={{ height: 80, marginTop: 50 }} key={1} />
   );
 
   if (!isFetched) {

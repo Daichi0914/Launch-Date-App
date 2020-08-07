@@ -9,7 +9,7 @@ import firebase from '../../CONFIG/firebase';
 // import classes from './list.module.css';
 
 const MyList = () => {
-  const [comics, setComics] = useState(null);
+  const [comics, setComics] = useState([]);
   const [comicDatas, setComicDatas] = useState(null);
 
   const user = useContext(AuthContext);
@@ -25,21 +25,25 @@ const MyList = () => {
           .doc(user.uid)
           .collection('comics')
           .get();
-        console.log(querySnapshot)
+        console.log(querySnapshot);
         const fetchDatas = querySnapshot.docs.map(doc =>
           rakutenApi.getComicByIsbn(doc.data().isbn)
         );
-        console.log(fetchDatas)
+        console.log(fetchDatas);
         const listItem = fetchDatas.map(fetchData =>
-          comics.find(comic => fetchData === comic.isbn)
+          Promise.all(comics).then(() => {
+            comics.find(comic => fetchData === comic.isbn)
+          })
         );
-        console.log(listItem)
+        console.log(listItem);
       } catch (error) {
         console.log(error);
       }
     };
     myListItem();
   }, []);
+
+  console.log(comics);
 
   // const trendItems = items ? (
   //   currentItems.map((item, index) => <TrendCard />)

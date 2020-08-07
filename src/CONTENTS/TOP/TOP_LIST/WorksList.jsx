@@ -8,6 +8,7 @@ import classes from './list.module.css';
 
 const ReleaseList = () => {
   const [items, setItems] = useState([]);
+  const [copyItems, setCopyItems] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const [hasMoreItems, setHasMoreItems] = useState(true);
   const [isFetched, setIsFetched] = useState(false);
@@ -17,6 +18,7 @@ const ReleaseList = () => {
       try {
         const items = await rakutenApi.comics;
         setItems(items.data.Items);
+        setCopyItems(items.data.Items.concat())
         setIsFetched(true);
       } catch (error) {
         console.log(error);
@@ -25,6 +27,7 @@ const ReleaseList = () => {
     worksApi();
     return () => {
       setItems([]);
+      setCopyItems([]);
       setCurrentItems([]);
       setHasMoreItems(true);
       setIsFetched(false);
@@ -32,12 +35,12 @@ const ReleaseList = () => {
   }, []);
 
   const current_item_count = currentItems.length;
-  const max_items = 10;
-  const page_item_size = 4;
+  const max_items = items.length;
+  const page_item_size = 10;
 
   const loadItems = () => {
     if (current_item_count < max_items) {
-      let deleteArr = items.splice(0, page_item_size); // deleteArrにはデリートした方の配列が入る
+      let deleteArr = copyItems.splice(0, page_item_size); // deleteArrにはデリートした方の配列が入る
 
       setTimeout(() => {
         setCurrentItems(currentItems.concat(deleteArr));
@@ -68,7 +71,7 @@ const ReleaseList = () => {
   );
 
   const pageLoader = () => (
-    <Loader active inline='centered' style={{ height: 80, marginTop: 50 }} />
+    <Loader active inline='centered' style={{ height: 80, marginTop: 50 }} key={3} />
   );
 
   if (!isFetched) {
