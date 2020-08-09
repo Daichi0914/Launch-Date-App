@@ -8,6 +8,7 @@ import classes from './list.module.css';
 
 const ReleaseList = () => {
   const [items, setItems] = useState([]);
+  const [pageNum, setPageNum] = useState(1)
   const [copyItems, setCopyItems] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const [hasMoreItems, setHasMoreItems] = useState(true);
@@ -16,9 +17,9 @@ const ReleaseList = () => {
   useEffect(() => {
     const worksApi = async () => {
       try {
-        const items = await rakutenApi.comics;
-        setItems(items.data.Items);
-        setCopyItems(items.data.Items.concat())
+        const worksItems = await rakutenApi.worksComics(pageNum);
+        setItems(worksItems.data.Items);
+        setCopyItems(worksItems.data.Items.concat())
         setIsFetched(true);
       } catch (error) {
         console.log(error);
@@ -27,6 +28,7 @@ const ReleaseList = () => {
     worksApi();
     return () => {
       setItems([]);
+      setPageNum(1);
       setCopyItems([]);
       setCurrentItems([]);
       setHasMoreItems(true);

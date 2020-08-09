@@ -5,18 +5,20 @@ const applicationId = process.env.REACT_APP_APPLICATION_ID;
 
 const url = `https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&size=9&applicationId=${applicationId}`;
 
-// const comics = () => {
-//   const page = 30;
+// const pageNum = () => {
+//   const page = 4;
 //   const getData = [];
-//   for (let i = 1; i < page + 1; i++) {
+//   for (let i = 1; i < page; i++) {
 //     getData.concat(axios.get(`${url}&page=${i}`));
 //   }
 //   return getData;
 // };
 
 export default {
-  // comics: comics(),
-  comics: axios.get(`${url}`),
+  comics: page => axios.get(`${url}&page=${page}`),
+  trendComics: page => axios.get(`${url}&sort=sales&page=${page}`),
+  releaseComics: page => axios.get(`${url}&sort=%2BreleaseDate&page=${page}`),
+  worksComics: page => axios.get(`${url}&page=${page}`),
   getComicsByTitle: title => axios.get(`${url}&title=${title}`),
   getComicsByAuthors: author => axios.get(`${url}&author=${author}`),
   getComicsByPublishersName: publisher => axios.get(`${url}&publisherName=${publisher}`),
