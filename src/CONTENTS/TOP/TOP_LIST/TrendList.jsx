@@ -37,17 +37,17 @@ const TrendList = () => {
   }, [pageNum]);
 
   const current_item_count = currentItems.length;
-  const max_items = items.length;
+  const max_items = 300;
   const page_item_size = 30;
 
   const loadItems = () => {
-    if (pageNum < 11) {
+    if (current_item_count < max_items) {
       let deleteArr = copyItems.splice(0, page_item_size); // deleteArrにはデリートした方の配列が入る
 
       if (!copyItems.length) {
         setTimeout(() => {
           setCurrentItems(currentItems.concat(deleteArr));
-          setPageNum(pageNum + 1)
+          setPageNum(pageNum + 1);
         }, 500);
       } else {
         setTimeout(() => {
@@ -59,10 +59,10 @@ const TrendList = () => {
     }
   };
 
-  console.log("pageNum", pageNum);
-  console.log("items", items);
-  console.log("copyItems", copyItems);
-  console.log("currentItems",currentItems);
+  console.log('pageNum', pageNum);
+  console.log('items', items);
+  console.log('copyItems', copyItems);
+  console.log('currentItems', currentItems);
 
   const trendItems = items ? (
     currentItems.map((item, index) => (
@@ -90,7 +90,13 @@ const TrendList = () => {
   );
 
   if (!isFetched) {
-    return <Loader active inline='centered' style={{ height: 80, marginTop: 50 }} />;
+    return (
+      <div className={classes.list}>
+        <Grid columns={4} style={{ width: '100%' }}>
+          <Grid.Row>{trendItems}</Grid.Row>
+        </Grid>
+      </div>
+    );
   }
 
   return (
