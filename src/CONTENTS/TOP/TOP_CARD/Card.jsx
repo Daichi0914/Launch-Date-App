@@ -25,7 +25,16 @@ const TrendCard = ({ img, title, author, publisherName, salesDate, isbn }) => {
   return (
     <Grid.Column style={{ minWidth: 190 }}>
       <Card style={{ marginTop: '20px' }}>
-        <div style={{ width: '100%', minWidth: 140, height: 'auto', backgroundColor: '#1f1f1f', justifyContent: 'center', display: 'flex' }}>
+        <div
+          style={{
+            width: '100%',
+            minWidth: 140,
+            height: 'auto',
+            backgroundColor: '#1f1f1f',
+            justifyContent: 'center',
+            display: 'flex',
+          }}
+        >
           <Image src={img} wrapped ui={true} />
         </div>
         <Card.Content>
