@@ -32,7 +32,7 @@ export default class TopMenu extends Component {
           active={activeItem === 'trend'}
           onClick={this.handleItemClick}
         >
-          月間トレンド
+          トレンド
         </Menu.Item>
 
         <Menu.Item

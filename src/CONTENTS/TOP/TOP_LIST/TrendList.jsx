@@ -8,6 +8,7 @@ import classes from './list.module.css';
 
 const TrendList = () => {
   const [items, setItems] = useState([]);
+  const [pageNum, setPageNum] = useState(1);
   const [copyItems, setCopyItems] = useState([]);
   const [currentItems, setCurrentItems] = useState([]);
   const [hasMoreItems, setHasMoreItems] = useState(true);
@@ -16,10 +17,9 @@ const TrendList = () => {
   useEffect(() => {
     const trendApi = async () => {
       try {
-        const items = await rakutenApi.comics;
-        console.log(items);
-        setItems(items.data.Items);
-        setCopyItems(items.data.Items.concat());
+        const trendItems = await rakutenApi.trendComics(pageNum);
+        setItems(items.concat(trendItems.data.Items));
+        setCopyItems(copyItems.concat(trendItems.data.Items));
         setIsFetched(true);
       } catch (error) {
         console.log(error);
@@ -27,32 +27,42 @@ const TrendList = () => {
     };
     trendApi();
     return () => {
-      setItems([]);
-      setCopyItems([]);
-      setCurrentItems([]);
+      // setItems([]);
+      // setPageNum(1);
+      // setCopyItems([]);
+      // setCurrentItems([]);
       setHasMoreItems(true);
       setIsFetched(false);
     };
-  }, []);
+  }, [pageNum]);
 
   const current_item_count = currentItems.length;
   const max_items = items.length;
-  const page_item_size = 10;
+  const page_item_size = 30;
 
   const loadItems = () => {
-    if (current_item_count < max_items) {
+    if (pageNum < 11) {
       let deleteArr = copyItems.splice(0, page_item_size); // deleteArrにはデリートした方の配列が入る
 
-      setTimeout(() => {
-        setCurrentItems(currentItems.concat(deleteArr));
-      }, 500);
+      if (!copyItems.length) {
+        setTimeout(() => {
+          setCurrentItems(currentItems.concat(deleteArr));
+          setPageNum(pageNum + 1)
+        }, 500);
+      } else {
+        setTimeout(() => {
+          setCurrentItems(currentItems.concat(deleteArr));
+        }, 500);
+      }
     } else {
-      setHasMoreItems(false); // レンダリング時に
+      setHasMoreItems(false);
     }
   };
 
-  console.log(items);
-  console.log(currentItems);
+  console.log("pageNum", pageNum);
+  console.log("items", items);
+  console.log("copyItems", copyItems);
+  console.log("currentItems",currentItems);
 
   const trendItems = items ? (
     currentItems.map((item, index) => (
@@ -80,7 +90,7 @@ const TrendList = () => {
   );
 
   if (!isFetched) {
-    return <div>Loading...</div>;
+    return <Loader active inline='centered' style={{ height: 80, marginTop: 50 }} />;
   }
 
   return (
