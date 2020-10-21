@@ -5,15 +5,6 @@ const applicationId = process.env.REACT_APP_APPLICATION_ID;
 
 const url = `https://app.rakuten.co.jp/services/api/BooksBook/Search/20170404?format=json&size=9&applicationId=${applicationId}`;
 
-// const pageNum = () => {
-//   const page = 4;
-//   const getData = [];
-//   for (let i = 1; i < page; i++) {
-//     getData.concat(axios.get(`${url}&page=${i}`));
-//   }
-//   return getData;
-// };
-
 export default {
   comics: page => axios.get(`${url}&page=${page}`),
   trendComics: page => axios.get(`${url}&sort=sales&page=${page}`),

@@ -10,6 +10,7 @@ import firebase from '../../CONFIG/firebase';
 
 const MyList = () => {
   const [comics, setComics] = useState([]);
+  // const [pageNum, setPageNum] = useState(1);
   const [comicDatas, setComicDatas] = useState(null);
 
   const user = useContext(AuthContext);
@@ -17,22 +18,22 @@ const MyList = () => {
   useEffect(() => {
     const myListItem = async () => {
       try {
-        const fetchItems = await rakutenApi.comics;
-        setComics(fetchItems.data.Items);
+        // const fetchItems = await rakutenApi.comics(pageNum);
+        // setComics(fetchItems.data.Items);
         const querySnapshot = await firebase
           .firestore()
           .collection('users')
           .doc(user.uid)
           .collection('comics')
           .get();
-        console.log(querySnapshot);
+        console.log(querySnapshot.docs);
         const fetchDatas = querySnapshot.docs.map(doc =>
           rakutenApi.getComicByIsbn(doc.data().isbn)
         );
         console.log(fetchDatas);
         const listItem = fetchDatas.map(fetchData =>
           Promise.all(comics).then(() => {
-            comics.find(comic => fetchData === comic.isbn)
+            comics.find(comic => fetchData === comic.isbn);
           })
         );
         console.log(listItem);
