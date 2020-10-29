@@ -23,7 +23,7 @@ const SignIn = ({ history }) => {
   const [currentEmail, setCurrentEmail] = useState('');
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
     firebase
       .auth()
@@ -40,20 +40,16 @@ const SignIn = ({ history }) => {
   const user = useContext(AuthContext);
 
   const handleReset = () => {
-    if (currentEmail === user.email) {
-      firebase
-        .auth()
-        .sendPasswordResetEmail(user.email)
-        .then(function () {
-          window.alert('パスワードリセット用メールを送信しました。');
-          history.push('/SignIn');
-        })
-        .catch(function (error) {
-          window.alert(error);
-        });
-    } else {
-      window.alert('このメールアドレスは登録されておりません。');
-    }
+    firebase
+      .auth()
+      .sendPasswordResetEmail(currentEmail)
+      .then(function () {
+        window.alert('パスワードリセット用メールを送信しました。');
+        history.push('/SignIn');
+      })
+      .catch(function (error) {
+        window.alert(error);
+      });
   };
 
   if (user) {
@@ -74,7 +70,7 @@ const SignIn = ({ history }) => {
                   label='E-mail'
                   placeholder='E-mail'
                   type='email'
-                  onChange={(e) => {
+                  onChange={e => {
                     setEmail(e.target.value);
                   }}
                   value={email}
@@ -85,7 +81,7 @@ const SignIn = ({ history }) => {
                   label='Password'
                   type='password'
                   placeholder='Password'
-                  onChange={(e) => {
+                  onChange={e => {
                     setPass(e.target.value);
                   }}
                   value={pass}
@@ -106,17 +102,14 @@ const SignIn = ({ history }) => {
               </p>
             </div>
             <Modal size='small' open={isOpen}>
-              <Header
-                content='Registered E-mail'
-                className={classes.modalTitle}
-              />
+              <Header content='Registered E-mail' className={classes.modalTitle} />
               <Modal.Content>
                 <div className={classes.modalBody}>
                   <Form.Input
                     type='email'
                     icon='envelope'
                     iconPosition='left'
-                    onChange={(e) => {
+                    onChange={e => {
                       setCurrentEmail(e.target.value);
                     }}
                     value={currentEmail}
