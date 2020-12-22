@@ -1,7 +1,7 @@
 import React from 'react';
 import Top from './TOP/Top';
 import MyList from './MY_LIST/MyList';
-import SettingsF from './SETTINGS/Settings';
+import Settings from './SETTINGS/Settings';
 
 const Contents = ({ menuClick }) => {
   if (menuClick === 'Top') {
@@ -11,7 +11,7 @@ const Contents = ({ menuClick }) => {
     return <MyList />;
   }
   if (menuClick === 'Settings') {
-    return <SettingsF />;
+    return <Settings />;
   }
 };
 
